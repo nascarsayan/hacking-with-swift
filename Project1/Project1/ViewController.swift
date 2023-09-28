@@ -27,6 +27,8 @@ class ViewController: UITableViewController {
             }
         }
         
+        pictures = pictures.sorted()
+        
         print(pictures)
     }
     
@@ -43,6 +45,8 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
+            vc.imageCount = pictures.count
+            vc.selectedImageIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         }
     }
